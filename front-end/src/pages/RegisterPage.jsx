@@ -10,7 +10,7 @@ export default function LoginPage() {
         email: "",
         password: "",
         passwordConfirm: "",
-        role: "owner",
+        role: "",
     });
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -128,7 +128,7 @@ export default function LoginPage() {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className="mb-2">
+                    <div className="mb-6">
                         <label
                             htmlFor="password-confirm"
                             className="block mb-2.5 text-[#6B6560] text-sm font-medium text-heading"
@@ -145,6 +145,25 @@ export default function LoginPage() {
                             value={formData.passwordConfirm}
                             onChange={handleChange}
                         />
+                    </div>
+                    <div className="mb-2">
+                        <label
+                            htmlFor="role"
+                            className="block mb-2.5 text-[#6B6560] text-sm font-medium text-heading"
+                        >
+                            Role
+                        </label>
+                        <select
+                            name="role"
+                            id="role"
+                            className="bg-[#181b25] border border-[#6B6560] text-heading text-sm rounded-md focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                            value={formData.role}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option>owner</option>
+                            <option>investor</option>
+                        </select>
                     </div>
                     {errorMessage && (
                         <p className="text-red-500">*{errorMessage}</p>
