@@ -3,6 +3,9 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 
+import dns from "node:dns/promises";
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
 // Internal Modules
 import { dbConnect } from "./config/db.js";
 import userRoutes from "./routes/user.router.js";
