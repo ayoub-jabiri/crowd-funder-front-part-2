@@ -25,9 +25,15 @@ export const register = async (req, res) => {
             await createBalance(user._id);
         }
 
+        // Genrate the user token
+        const accessToken = jwt.sign(
+            JSON.stringify(user),
+            process.env.ACCESS_TOKEN_SECRET
+        );
+
         res.status(201).json({
-            message: "The user has been registered successfully!",
             user,
+            accessToken,
         });
     } catch (error) {
         console.error(error.message);
@@ -45,6 +51,7 @@ export const login = async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET
         );
         res.status(200).json({
+            user,
             accessToken,
         });
     } catch (error) {
