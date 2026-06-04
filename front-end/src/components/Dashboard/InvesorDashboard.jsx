@@ -1,6 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import Card from "./Card";
+import { getDashboardData } from "../../store/slices/investor/investor";
+import { useEffect } from "react";
 
 export default function InvesorDashboard() {
+    const { dashboardData } = useSelector((state) => state.investor);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getDashboardData());
+    }, []);
+
+    console.log(dashboardData);
+
     return (
         <div className="dashboard">
             <div className="page-header">
@@ -9,11 +21,11 @@ export default function InvesorDashboard() {
                 </header>
 
                 <section className="stats">
-                    <Card
+                    {/* <Card
                         title="Total Projects"
                         value={stats.total}
                         subtitle="All projects"
-                    />
+                    /> */}
                 </section>
             </div>
         </div>

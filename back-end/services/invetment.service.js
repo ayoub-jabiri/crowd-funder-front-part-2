@@ -89,8 +89,6 @@ export const getInvestorDashboard = async (investorId) => {
 
     const { investments } = await getInvestorInvestments(investorId);
 
-    console.log(investments);
-
     const amountInvested = investments.reduce((p, c) => p + c.amount, 0);
 
     return {
