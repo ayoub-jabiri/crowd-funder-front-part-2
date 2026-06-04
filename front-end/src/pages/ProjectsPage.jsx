@@ -1,7 +1,7 @@
 import { RiAddLine } from "@remixicon/react";
 import ProjectCard from "../components/Layout/projects/ProjectCard";
 import { useSelector, useDispatch } from "react-redux";
-import { getProjects } from "../features/projects/projectsSilce";
+import { getProjects } from "../store/slices/projects/projectsSilce";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AddProjectModal from "../components/Layout/projects/AddProjectModal";

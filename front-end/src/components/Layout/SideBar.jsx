@@ -1,7 +1,7 @@
 import { RiBriefcaseLine, RiDashboardLine, RiUserFill } from "@remixicon/react";
 import { Link } from "react-router";
 import { useDispatch } from "react-redux";
-import { userLogout } from "../../features/auth/authSilce";
+import { userLogout } from "../../store/slices/auth/authSilce";
 
 export default function SideBar() {
     const dispatch = useDispatch();

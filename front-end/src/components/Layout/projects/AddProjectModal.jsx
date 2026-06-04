@@ -2,7 +2,7 @@ import { RiCloseLine } from "@remixicon/react";
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createProject } from "../../../features/projects/projectsSilce";
+import { createProject } from "../../../store/slices/projects/projectsSilce";
 
 export default function AddProjectModal({ setShowPopup }) {
     const [formValues, setFormValues] = useState({

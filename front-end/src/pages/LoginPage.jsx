@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogin } from "../features/auth/authSilce";
+import { userLogin } from "../store/slices/auth/authSilce";
 import { Link, useNavigate } from "react-router";
 
 export default function LoginPage() {
@@ -37,7 +37,12 @@ export default function LoginPage() {
                 formData
             );
 
-            dispatch(userLogin({ token: response.data.accessToken }));
+            dispatch(
+                userLogin({
+                    token: response.data.accessToken,
+                    role: response.data.user.role,
+                })
+            );
 
             navigate("/dashboard", { replace: true });
         } catch (error) {

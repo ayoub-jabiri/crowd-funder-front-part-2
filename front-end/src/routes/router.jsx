@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
     {
         path: "/projects",
         element: (
-            <AppLayout>
+            <AppLayout allowedRole="owner">
                 <ProjectsPage />
             </AppLayout>
         ),
@@ -39,11 +39,9 @@ export const router = createBrowserRouter([
     {
         path: "/projects/:id",
         element: (
-            <AppLayout>
+            <AppLayout allowedRole="owner">
                 <ProjectsDetailsPage />
             </AppLayout>
         ),
     },
-
 ]);
-

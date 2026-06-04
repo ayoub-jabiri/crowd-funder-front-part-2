@@ -7,7 +7,7 @@ import {
     getSingleProject,
     handleOpenAndCloseProject,
     deleteProject,
-} from "../features/projects/projectsSilce";
+} from "../store/slices/projects/projectsSilce";
 
 export default function ProjectsDetailsPage() {
     const { VITE_API_URL } = import.meta.env;
