@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 // Internal Modules
 import Project from "../models/project.schema.js";
 import Investment from "../models/investment.schema.js";
+import { getInvestorBalance } from "./balance.service.js";
 
 export const getOpenProjects = async () =>
     await Project.find({ status: "open" });
@@ -81,4 +82,20 @@ export const getProjectPrecentage = async (projectId, investorId) => {
     const totalPercantage = data.length ? data[0].totalPercantage : 0;
 
     return totalPercantage;
+};
+
+export const getInvestorDashboard = async (investorId) => {
+    const { balance } = await getInvestorBalance(investorId);
+
+    const { investments } = await getInvestorInvestments(investorId);
+
+    console.log(investments);
+
+    const amountInvested = investments.reduce((p, c) => p + c.amount, 0);
+
+    return {
+        disponibleBalance: balance,
+        amountInvested: amountInvested,
+        projectsInvestedIn: investments.length,
+    };
 };

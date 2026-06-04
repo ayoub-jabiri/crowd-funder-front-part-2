@@ -7,6 +7,7 @@ import {
     projectDetails,
     projectInvest,
     getInvestments,
+    investorDashboard,
 } from "../controllers/investment.controller.js";
 import {
     authenticationCheck,
@@ -54,6 +55,12 @@ investmentRoutes.get(
     "/investments",
     authorizationCheck(["investor"]),
     getInvestments
+);
+
+investmentRoutes.get(
+    "/investor/dashboard",
+    authorizationCheck(["investor"]),
+    investorDashboard
 );
 
 export default investmentRoutes;

@@ -4,6 +4,7 @@ import {
     getProjectDetails,
     investInProject,
     getInvestorInvestments,
+    getInvestorDashboard,
 } from "../services/invetment.service.js";
 import { decreaseBalance } from "../services/balance.service.js";
 import { errorResponse } from "../utils/error.response.js";
@@ -13,6 +14,17 @@ export const openProjects = async (req, res) => {
         const projects = await getOpenProjects();
 
         res.json(projects);
+    } catch (error) {
+        console.error(error.message);
+        errorResponse(res, 500, "An internal error occured!");
+    }
+};
+
+export const investorDashboard = async (req, res) => {
+    try {
+        const dashboardData = await getInvestorDashboard(req.user._id);
+
+        res.json(dashboardData);
     } catch (error) {
         console.error(error.message);
         errorResponse(res, 500, "An internal error occured!");
