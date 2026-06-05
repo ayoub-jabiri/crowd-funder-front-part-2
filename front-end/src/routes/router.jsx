@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
     {
         path: "/projects",
         element: (
-            <AppLayout allowedRole="owner">
+            <AppLayout>
                 <ProjectsPage />
             </AppLayout>
         ),
