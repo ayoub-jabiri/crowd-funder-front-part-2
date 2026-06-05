@@ -1,8 +1,13 @@
 {
-  "dependencies": {
-    "@remixicon/react": "^4.9.0",
-    "@tailwindcss/vite": "^4.3.0",
-    "cors": "^2.8.6",
-    "tailwindcss": "^4.3.0"
+  "name": "crowd-funder-project",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd back-end && npm start",
+    "client": "cd front-end && npm run dev"
   }
 }
