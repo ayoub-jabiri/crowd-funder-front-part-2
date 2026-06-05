@@ -11,7 +11,9 @@ export default function InvesorDashboard() {
         dispatch(getDashboardData());
     }, []);
 
-    console.log(dashboardData);
+    if (!dashboardData) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="dashboard">
@@ -21,11 +23,18 @@ export default function InvesorDashboard() {
                 </header>
 
                 <section className="stats">
-                    {/* <Card
-                        title="Total Projects"
-                        value={stats.total}
-                        subtitle="All projects"
-                    /> */}
+                    <Card
+                        title="Disponible Balance"
+                        value={dashboardData.disponibleBalance || 0}
+                    />
+                    <Card
+                        title="Amount Invested"
+                        value={dashboardData.amountInvested || 0}
+                    />
+                    <Card
+                        title="Projects Funded"
+                        value={dashboardData.projectsInvestedIn || 0}
+                    />
                 </section>
             </div>
         </div>
