@@ -1,9 +1,11 @@
 import { RiBriefcaseLine, RiDashboardLine, RiUserFill } from "@remixicon/react";
 import { Link } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../store/slices/auth/authSilce";
 
 export default function SideBar() {
+    const { role } = useSelector((state) => state.userAuth);
+
     const dispatch = useDispatch();
 
     function handleLogout() {
@@ -35,6 +37,15 @@ export default function SideBar() {
                     <RiBriefcaseLine className="w-[20px]" />
                     <span>Projects</span>
                 </Link>
+                {role === "investor" && (
+                    <Link
+                        to="/wallet"
+                        className="text-white hover:bg-[#F0EDE8] hover:text-black w-full text-start px-4 py-3 rounded-md flex items-center gap-1 cursor-pointer main-transition"
+                    >
+                        <RiBriefcaseLine className="w-[20px]" />
+                        <span>Wallet</span>
+                    </Link>
+                )}
             </div>
             <div className="p-6 border-t border-[#E2DDD8] absolute left-[50%] translate-x-[-50%] bottom-0 w-[calc(100%-16px)]">
                 <Link to="/login" onClick={handleLogout}>
