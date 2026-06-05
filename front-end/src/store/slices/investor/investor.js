@@ -25,16 +25,38 @@ export const getDashboardData = createAsyncThunk(
     }
 );
 
+export const getBalance = createAsyncThunk(
+    "investor/festchBalance",
+    async () => {
+        try {
+            const response = await axios.get(`${VITE_API_URL}/balance`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            return response.data.balance;
+        } catch (error) {
+            // throw error;
+        }
+    }
+);
+
 const investorSlice = createSlice({
     name: "investor",
     initialState: {
         dashboardData: null,
         investments: [],
+        balance: 0,
     },
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getDashboardData.fulfilled, (state, action) => {
             state.dashboardData = action.payload;
+        });
+
+        builder.addCase(getBalance.fulfilled, (state, action) => {
+            state.balance = action.payload;
         });
     },
 });

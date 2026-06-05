@@ -6,6 +6,7 @@ import RegisterPage from "../pages/RegisterPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import ProjectsPage from "../pages/ProjectsPage";
 import ProjectsDetailsPage from "../pages/ProjectsDetailsPage";
+import WalletPage from "../pages/WalletPage";
 
 export const router = createBrowserRouter([
     {
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
     {
         path: "/projects",
         element: (
-            <AppLayout allowedRole="owner">
+            <AppLayout>
                 <ProjectsPage />
             </AppLayout>
         ),
@@ -41,6 +42,14 @@ export const router = createBrowserRouter([
         element: (
             <AppLayout allowedRole="owner">
                 <ProjectsDetailsPage />
+            </AppLayout>
+        ),
+    },
+    {
+        path: "/wallet",
+        element: (
+            <AppLayout allowedRole="investor">
+                <WalletPage />
             </AppLayout>
         ),
     },
