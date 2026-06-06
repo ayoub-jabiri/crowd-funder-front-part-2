@@ -28,7 +28,9 @@ export default function WalletPage() {
                     </button>
                 </div>
             </div>
-            {showDepositModal && <DepositModal />}
+            {showDepositModal && (
+                <DepositModal closeModal={() => setShowDepositModal(false)} />
+            )}
         </>
     );
 }
