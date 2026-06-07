@@ -1,6 +1,18 @@
 import { RiCloseLine } from "@remixicon/react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { walletDeposit } from "../../store/slices/investor/investor";
 
 export default function DepositModal({ closeModal }) {
+    const [amount, setAmount] = useState("");
+    const dispatch = useDispatch();
+
+    function handleDeposit() {
+        if (amount !== "") {
+            dispatch(walletDeposit(+amount));
+        }
+        closeModal();
+    }
     return (
         <div
             id="default-modal"
@@ -26,10 +38,13 @@ export default function DepositModal({ closeModal }) {
                             type="number"
                             className="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-[300px] px-3 py-2.5 mx-auto shadow-xs placeholder:text-body"
                             placeholder="Amount"
+                            value={amount}
+                            onChange={(e) => setAmount(e.target.value)}
                         />
                         <button
                             type="button"
                             className="block bg-white text-black border border-black font-medium leading-5 rounded-md text-sm px-4 py-2.5 mx-auto cursor-pointer"
+                            onClick={handleDeposit}
                         >
                             <span>Deposit</span>
                         </button>
