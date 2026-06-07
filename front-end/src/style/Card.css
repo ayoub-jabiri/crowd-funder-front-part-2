@@ -8,8 +8,7 @@
         cursor: pointer;
         border: 1px solid #e2ddd8;
         margin-top: 50px;
-         margin-left: 13px;
-        
+         margin-left: 13px;        
     }
     .card:hover {
         transform: translateY(-5px);

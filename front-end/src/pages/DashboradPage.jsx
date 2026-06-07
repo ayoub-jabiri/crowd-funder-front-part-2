@@ -2,6 +2,7 @@ import "../style/DashboradPage.css";
 import Card from "../components/Dashboard/Card";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import EmptyState from "../components/Dashboard/EmptyState";
 
 function DashboradPage() {
   const [stats, setStats] = useState({
@@ -78,24 +79,27 @@ function DashboradPage() {
       </div>
 
       {/*  Investments List */}
-      <section className="investments-list">
-        <h2>My Investments</h2>
+   <section className="investments-list">
+  <h2>My Investments</h2>
 
-        {investments.length === 0 ? (
-          <p>No investments yet</p>
-        ) : (
-          investments.map((inv) => (
-            <div key={inv._id} className="investment-card">
-              <p>
-                <strong>Project:</strong> {inv.projectName || inv.projectId}
-              </p>
-              <p>
-                <strong>Amount:</strong> {inv.amount} MAD
-              </p>
-            </div>
-          ))
-        )}
-      </section>
+  {investments.length === 0 ? (
+    <EmptyState 
+      title="No investments yet"
+      message="Start investing in projects to see them here."
+    />
+  ) : (
+    investments.map((inv) => (
+      <div key={inv._id} className="investment-card">
+        <p>
+          <strong>Project:</strong> {inv.projectName || inv.projectId}
+        </p>
+        <p>
+          <strong>Amount:</strong> {inv.amount} MAD
+        </p>
+      </div>
+    ))
+  )}
+</section>
     </div>
   );
 }
