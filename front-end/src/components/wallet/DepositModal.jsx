@@ -10,8 +10,8 @@ export default function DepositModal({ closeModal }) {
     function handleDeposit() {
         if (amount !== "") {
             dispatch(walletDeposit(+amount));
+            closeModal();
         }
-        closeModal();
     }
     return (
         <div
