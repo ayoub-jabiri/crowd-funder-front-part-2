@@ -42,6 +42,27 @@ export const getBalance = createAsyncThunk(
     }
 );
 
+export const walletDeposit = createAsyncThunk(
+    "investor/walletDeposit",
+    async (amount) => {
+        try {
+            const response = await axios.put(
+                `${VITE_API_URL}/balance/deposit`,
+                { amount },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            return response.data.balance.balance;
+        } catch (error) {
+            // throw error;
+        }
+    }
+);
+
 const investorSlice = createSlice({
     name: "investor",
     initialState: {
@@ -57,6 +78,10 @@ const investorSlice = createSlice({
 
         builder.addCase(getBalance.fulfilled, (state, action) => {
             state.balance = action.payload;
+        });
+
+        builder.addCase(walletDeposit.fulfilled, (state, action) => {
+            state.balance = action.payload.amount;
         });
     },
 });
